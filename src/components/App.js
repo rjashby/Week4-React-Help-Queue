@@ -15,6 +15,9 @@ function App(){
 
 export default App;
 
+{/* This is a JSX comment. */}
+// Think about curly braces as a way to escape JSX back and return to vanilla JS.
+
 // import logo from './logo.svg';
 // import './App.css';
 
