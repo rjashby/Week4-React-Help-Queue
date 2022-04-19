@@ -1,5 +1,6 @@
 import React from "react";
 import Ticket from "./Ticket";
+import reactLogo from "./../img/reactLogo.png"
 
 const mainTicketList = [
   {
@@ -24,10 +25,22 @@ function TicketList(){
     <React.Fragment>
       <hr/>
       {mainTicketList.map((ticket, index) =>
-        <Ticket names={ticket.names}
-          location={ticket.location}
-          issue={ticket.issue}
-          key={index}/>
+        <div class="flex items-center justify-center">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg mt-2 mb-2">
+            <div class="flex items-center justify-center">
+              <img class="h-12 w-21" src={reactLogo} alt="React Logo" />
+              <br/>
+            </div>
+            <div class="px-6 py-4">
+              <p class="text-center text-gray-700 text-base">
+                <Ticket names={ticket.names}
+                  location={ticket.location}
+                  issue={ticket.issue}
+                  key={index}/>
+              </p>
+            </div>
+          </div>
+        </div>
       )}
     </React.Fragment>
   );

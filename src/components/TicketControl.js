@@ -30,7 +30,9 @@ class TicketControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <div class="flex justify-center">  
+          <button class="bg-yellow-500 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-full" onClick={this.handleClick}>{buttonText}</button>
+        </div>
       </React.Fragment>
     );
   }
