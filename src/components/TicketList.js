@@ -16,15 +16,13 @@ function TicketList(props){
               <br/>
             </div>
             <div className="px-6 py-4">
-              <p className="text-center text-gray-700 text-base">
-                <Ticket 
-                  whenTicketClicked = { props.onTicketSelection }
-                  names={ticket.names}
-                  location={ticket.location}
-                  issue={ticket.issue}
-                  id={ticket.id}
-                  key={ticket.id}/>
-              </p>
+              <Ticket 
+                whenTicketClicked = { props.onTicketSelection }
+                names={ticket.names}
+                location={ticket.location}
+                issue={ticket.issue}
+                id={ticket.id}
+                key={ticket.id}/>
             </div>
           </div>
         </div>
