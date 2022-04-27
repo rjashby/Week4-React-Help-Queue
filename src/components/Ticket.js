@@ -6,7 +6,7 @@ function Ticket(props){
   return (
     <React.Fragment>
       <div className="flex items-center justify-center">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg mt-2 mb-2">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg mt-2 mb-2 ml-2 mr-2">
           <div className="px-6 py-4">
             <div onClick = {() => props.whenTicketClicked(props.id)}>
               <div className="flex items-center justify-center">
