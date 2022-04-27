@@ -10,12 +10,20 @@ export const toggleForm = () => ({
 });
 
 export const addTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
+  const { names, location, issue, timeOpen, formattedWaitTime, id } = ticket;
   return {
     type: c.ADD_TICKET,
     names: names,
     location: location,
     issue: issue,
+    timeOpen: timeOpen,
+    formattedWaitTime,
     id: id
   }
 }
+
+export const updateTime = (id, formattedWaitTime) => ({
+  type: c.UPDATE_TIME,
+  id: id,
+  formattedWaitTime: formattedWaitTime
+});
