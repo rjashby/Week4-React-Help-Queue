@@ -1,19 +1,8 @@
 import * as c from './../actions/ActionTypes';
 
 const ticketListReducer = (state = {}, action) => {
-  const { names, location, issue, id, formattedWaitTime, timeOpen } = action;
+  const { id, formattedWaitTime } = action;
   switch (action.type) {
-  case c.ADD_TICKET:
-    return Object.assign({}, state, {
-      [id]: {
-        names: names,
-        location: location,
-        issue: issue,
-        timeOpen: timeOpen,
-        id: id,
-        formattedWaitTime: formattedWaitTime
-      }
-    });
   case c.DELETE_TICKET:
     let newState = { ...state };
     delete newState[id];
