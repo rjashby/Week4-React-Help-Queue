@@ -32,9 +32,7 @@ function TicketList(props){
   } else {
     return (
       <React.Fragment>
-        <div className="flex justify-center"> 
-          <h3>Loading...</h3>
-        </div>
+        <h1 className="text-center">Loading...</h1>
       </React.Fragment>
     )
   }

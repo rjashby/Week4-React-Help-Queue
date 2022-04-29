@@ -6,7 +6,7 @@ import EditTicketForm from './EditTicketForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
-import { withFirestore } from 'react-redux-firebase';
+import { withFirestore, isLoaded } from 'react-redux-firebase';
 
 class TicketControl extends React.Component {
 
@@ -85,32 +85,46 @@ class TicketControl extends React.Component {
   }
 
   render(){
-    let currentlyVisibleState = null;
-    let buttonText = null;
-    if (this.state.editing) {
-      currentlyVisibleState = <EditTicketForm ticket = {this.state.selectedTicket} onEditTicket = {this.handleEditingTicketInList} />
-      buttonText = "Return to Ticket List";
-    } else if (this.state.selectedTicket != null) {
-      currentlyVisibleState = <TicketDetail ticket = {this.state.selectedTicket} onClickingDelete = {this.handleDeletingTicket} 
-      onClickingEdit= {this.handleEditClick} />
-      buttonText = "Return to Ticket List";
-    } else if (this.props.formVisibleOnPage) {
-      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
-      buttonText = "Return To Ticket List";
-    } else {
-      currentlyVisibleState = <TicketList onTicketSelection={this.handleChangingSelectedTicket} />
-      buttonText = "Add Ticket";
+    const auth = this.props.firebase.auth();
+    if (!isLoaded(auth)) {
+      return (
+        <React.Fragment>
+          <h1 className="text-center">Loading...</h1>
+        </React.Fragment>
+      )
     }
-    return (
+    if ((isLoaded(auth)) && (auth.currentUser == null)) {
       <React.Fragment>
-        {currentlyVisibleState}
-        <div className="flex justify-center">  
-          <button className="bg-yellow-500 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-full mt-2" onClick={this.handleClick}>{buttonText}</button>
-        </div>
+        <h1 className="text-center">You Must Be Signed In To Access The Queue!</h1>
       </React.Fragment>
-    );
+    }
+    if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      let currentlyVisibleState = null;
+      let buttonText = null;
+      if (this.state.editing) {
+        currentlyVisibleState = <EditTicketForm ticket = {this.state.selectedTicket} onEditTicket = {this.handleEditingTicketInList} />
+        buttonText = "Return to Ticket List";
+      } else if (this.state.selectedTicket != null) {
+        currentlyVisibleState = <TicketDetail ticket = {this.state.selectedTicket} onClickingDelete = {this.handleDeletingTicket} 
+        onClickingEdit= {this.handleEditClick} />
+        buttonText = "Return to Ticket List";
+      } else if (this.props.formVisibleOnPage) {
+        currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
+        buttonText = "Return To Ticket List";
+      } else {
+        currentlyVisibleState = <TicketList onTicketSelection={this.handleChangingSelectedTicket} />
+        buttonText = "Add Ticket";
+      }
+      return (
+        <React.Fragment>
+          {currentlyVisibleState}
+          <div className="flex justify-center">  
+            <button className="bg-yellow-500 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-full mt-2" onClick={this.handleClick}>{buttonText}</button>
+          </div>
+        </React.Fragment>
+      );
+    }
   }
-
 }
 
 TicketControl.propTypes = {
