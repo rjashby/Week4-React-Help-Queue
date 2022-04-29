@@ -1,5 +1,6 @@
 import React from "react";
-import tickets from "./../img/tickets.png"
+import tickets from "./../img/tickets.png";
+import { Link } from "react-router-dom";
 
 function Header(){
   return (
@@ -8,6 +9,10 @@ function Header(){
         <img className="h-52 w-64" src={tickets} alt="Tickets" />
       </div>
       <hr />
+      <div className="text-center">
+        <Link to="/">Home </Link>
+        <Link to="/signin"> Sign In</Link>
+      </div>
       <h1 className="text-center font-medium leading-tight text-4xl mt-2 mb-2">Help Queue</h1>
       <hr />
     </React.Fragment>

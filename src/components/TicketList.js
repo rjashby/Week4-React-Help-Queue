@@ -2,7 +2,7 @@ import React from "react";
 import Ticket from "./Ticket";
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
-import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 function TicketList(props){
   
@@ -32,7 +32,9 @@ function TicketList(props){
   } else {
     return (
       <React.Fragment>
-        <h3>Loading...</h3>
+        <div className="flex justify-center"> 
+          <h3>Loading...</h3>
+        </div>
       </React.Fragment>
     )
   }
