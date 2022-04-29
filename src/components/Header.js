@@ -10,8 +10,8 @@ function Header(){
       </div>
       <hr />
       <div className="text-center">
-        <Link to="/">Home </Link>
-        <Link to="/signin"> Sign In</Link>
+        <Link className="mr-2 underline text-xl" to="/">Home </Link>
+        <Link className="ml-2 underline text-xl" to="/signin"> Sign In</Link>
       </div>
       <h1 className="text-center font-medium leading-tight text-4xl mt-2 mb-2">Help Queue</h1>
       <hr />
